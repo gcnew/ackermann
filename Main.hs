@@ -17,6 +17,19 @@ pred n = snd (n g s)
 -- from Wikipedia (slower):
 -- pred n f x = n (\g h -> h (g f)) (\_ -> x) (\u -> u)
 
+-- http://math.andrej.com/2012/01/20/a-puzzle-about-typing/
+one = succ zero
+
+three :: LambdaInt
+three = succ . succ .  succ $ zero
+
+four :: LambdaInt
+four = succ . succ . succ .  succ $ zero
+
+ack :: LambdaInt -> LambdaInt -> LambdaInt
+ack m = m (\f n -> n f (f one)) succ
+
+
 pair l r f = f l r
 fst p = p (\l r -> l)
 snd p = p (\l r -> r)
